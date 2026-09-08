@@ -1,0 +1,6 @@
+{
+  "name": "Savera TV Display Slider",
+  "description": "Professional 10-second corporate TV display slider featuring celebratory employee birthday slide and industry safety precaution slides with live clock.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
