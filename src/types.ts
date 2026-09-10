@@ -60,3 +60,15 @@ export interface SlideData {
   };
   has3RGraphic?: boolean;
 }
+
+export interface BirthdayPerson {
+  id: string;
+  nameEn: string;
+  nameMr: string;
+  deptEn: string;
+  deptMr: string;
+  imageUrl: string;
+  unitEn?: string;
+  unitMr?: string;
+  date?: string;
+}

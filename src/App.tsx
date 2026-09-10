@@ -11,6 +11,7 @@ export default function App() {
   const [direction, setDirection] = useState<number>(1); // 1 for right-to-left, -1 for left-to-right
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [intervalDuration, setIntervalDuration] = useState<number>(10); // 10 seconds default as requested
+  const [currentSlideDuration, setCurrentSlideDuration] = useState<number>(10);
   const [timeLeft, setTimeLeft] = useState<number>(10);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
 
@@ -19,15 +20,23 @@ export default function App() {
   // Navigate to next slide
   const handleNext = useCallback(() => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % SLIDES_DATA.length);
-    setTimeLeft(intervalDuration);
+    setCurrentIndex((prev) => {
+      const next = (prev + 1) % SLIDES_DATA.length;
+      setTimeLeft(intervalDuration);
+      setCurrentSlideDuration(intervalDuration);
+      return next;
+    });
   }, [intervalDuration]);
 
   // Navigate to previous slide
   const handlePrev = useCallback(() => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + SLIDES_DATA.length) % SLIDES_DATA.length);
-    setTimeLeft(intervalDuration);
+    setCurrentIndex((prev) => {
+      const next = (prev - 1 + SLIDES_DATA.length) % SLIDES_DATA.length;
+      setTimeLeft(intervalDuration);
+      setCurrentSlideDuration(intervalDuration);
+      return next;
+    });
   }, [intervalDuration]);
 
   // Direct select slide
@@ -36,9 +45,16 @@ export default function App() {
       setDirection(index > currentIndex ? 1 : -1);
       setCurrentIndex(index);
       setTimeLeft(intervalDuration);
+      setCurrentSlideDuration(intervalDuration);
     },
     [currentIndex, intervalDuration]
   );
+
+  // Update progress reported by birthday slide (covering all carousel images)
+  const handleBirthdayProgress = useCallback((remainingSeconds: number, totalSeconds: number) => {
+    setTimeLeft(remainingSeconds);
+    setCurrentSlideDuration(totalSeconds);
+  }, []);
 
   // Toggle play/pause
   const handleTogglePlay = useCallback(() => {
@@ -49,6 +65,7 @@ export default function App() {
   const handleSelectDuration = useCallback((duration: number) => {
     setIntervalDuration(duration);
     setTimeLeft(duration);
+    setCurrentSlideDuration(duration);
   }, []);
 
   // Toggle Fullscreen
@@ -75,9 +92,10 @@ export default function App() {
     return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
   }, []);
 
-  // Countdown timer for 10-second automatic stay
+  // Countdown timer for automatic stay (safety slides use intervalDuration; birthday slide displays all images first then triggers transition)
   useEffect(() => {
     if (!isPlaying) return;
+    if (currentIndex === 0) return; // Birthday slide cycles through all employee images first, then triggers handleNext
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -90,7 +108,7 @@ export default function App() {
     }, 200);
 
     return () => clearInterval(timer);
-  }, [isPlaying, intervalDuration, handleNext]);
+  }, [isPlaying, intervalDuration, handleNext, currentIndex]);
 
   // Keyboard navigation for TV operators / remote controls
   useEffect(() => {
@@ -156,7 +174,12 @@ export default function App() {
             className="absolute inset-0 w-full h-full"
           >
             {currentSlide.type === 'birthday' ? (
-              <BirthdaySlide isActive={currentIndex === 0} />
+              <BirthdaySlide
+                isActive={currentIndex === 0}
+                isPlaying={isPlaying}
+                onAllImagesDisplayed={handleNext}
+                onProgressUpdate={handleBirthdayProgress}
+              />
             ) : (
               <SafetySlide slide={currentSlide} isActive={true} />
             )}
@@ -173,7 +196,7 @@ export default function App() {
         currentIndex={currentIndex}
         isPlaying={isPlaying}
         timeLeft={timeLeft}
-        intervalDuration={intervalDuration}
+        intervalDuration={currentIndex === 0 ? currentSlideDuration : intervalDuration}
         onSelectSlide={handleSelectSlide}
         onTogglePlay={handleTogglePlay}
         onNext={handleNext}

@@ -1,0 +1,48 @@
+import { BirthdayPerson } from '../types';
+
+export const INITIAL_BIRTHDAY_PERSONS: BirthdayPerson[] = [
+  {
+    id: 'b1',
+    nameEn: 'Ms. Priya Sharma',
+    nameMr: 'कु. प्रिया शर्मा',
+    deptEn: 'Production Dept.',
+    deptMr: 'उत्पादन विभाग',
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
+    unitEn: 'Unit - I',
+    unitMr: 'युनिट - १',
+    date: 'Today / आज',
+  },
+  {
+    id: 'b2',
+    nameEn: 'Mr. Rahul Deshmukh',
+    nameMr: 'श्री. राहुल देशमुख',
+    deptEn: 'Quality Assurance Dept.',
+    deptMr: 'गुणवत्ता हमी विभाग',
+    imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop',
+    unitEn: 'Unit - I',
+    unitMr: 'युनिट - १',
+    date: 'Today / आज',
+  },
+  {
+    id: 'b3',
+    nameEn: 'Ms. Sneha Kulkarni',
+    nameMr: 'कु. स्नेहा कुलकर्णी',
+    deptEn: 'Accounts & Admin Dept.',
+    deptMr: 'वित्त व प्रशासन विभाग',
+    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
+    unitEn: 'Unit - I',
+    unitMr: 'युनिट - १',
+    date: 'Today / आज',
+  },
+  {
+    id: 'b4',
+    nameEn: 'Mr. Amit Patil',
+    nameMr: 'श्री. अमित पाटील',
+    deptEn: 'Maintenance & Engineering',
+    deptMr: 'देखभाल व अभियांत्रिकी विभाग',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
+    unitEn: 'Unit - I',
+    unitMr: 'युनिट - १',
+    date: 'Today / आज',
+  },
+];

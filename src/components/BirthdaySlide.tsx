@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { motion } from 'motion/react';
-import { Sparkles, Heart, Gift, Cake, Award, PartyPopper } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Sparkles, Heart, Gift, Cake, Award, PartyPopper, Users } from 'lucide-react';
 import { SaveraLogo } from './SaveraLogo';
+import { BirthdayPerson } from '../types';
+import { INITIAL_BIRTHDAY_PERSONS } from '../data/birthdaysData';
+import { CelebrationDisplay } from './CelebrationDisplay';
 
 interface BirthdaySlideProps {
   isActive: boolean;
+  isPlaying?: boolean;
+  onAllImagesDisplayed?: () => void;
+  onProgressUpdate?: (remainingSeconds: number, totalSeconds: number) => void;
 }
 
 // Generate an array of floating balloons with various sizes, colors, delays, and paths
@@ -22,7 +28,77 @@ const BALLOONS = [
   { id: 10, color: '#f59e0b', shine: '#fde68a', size: 75, left: '60%', delay: 3.0, duration: 10, sway: -22 },
 ];
 
-export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
+export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
+  isActive,
+  isPlaying = true,
+  onAllImagesDisplayed,
+  onProgressUpdate,
+}) => {
+  const [persons, setPersons] = useState<BirthdayPerson[]>(INITIAL_BIRTHDAY_PERSONS);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Dynamically fetch birthday persons from server
+  useEffect(() => {
+    let isMounted = true;
+    const fetchBirthdays = async () => {
+      try {
+        const res = await fetch('/api/birthdays');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.persons) && data.persons.length >= 2 && isMounted) {
+            setPersons(data.persons);
+          }
+        }
+      } catch {
+        // Graceful fallback to initial profiles if server is not yet accessible
+      }
+    };
+
+    fetchBirthdays();
+    const interval = setInterval(fetchBirthdays, 25000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  // Display duration per employee image (4 seconds per employee, or 10s if single person)
+  const SECONDS_PER_PERSON = persons.length > 1 ? 4 : 10;
+  const totalDuration = Math.max(1, persons.length) * SECONDS_PER_PERSON;
+
+  // Track progress and cycle through all employee images first, then transition slide
+  useEffect(() => {
+    if (!isActive) {
+      setCurrentIndex(0);
+      return;
+    }
+
+    if (!isPlaying) return;
+
+    let elapsed = 0;
+    setCurrentIndex(0);
+    onProgressUpdate?.(totalDuration, totalDuration);
+
+    const interval = setInterval(() => {
+      elapsed += 0.2;
+      const remaining = Math.max(0, totalDuration - elapsed);
+      onProgressUpdate?.(remaining, totalDuration);
+
+      const nextIndex = Math.min(persons.length - 1, Math.floor(elapsed / SECONDS_PER_PERSON));
+      setCurrentIndex((prev) => (prev !== nextIndex ? nextIndex : prev));
+
+      // Once all images in carousel have completed their display duration, transition to next slide
+      if (elapsed >= totalDuration) {
+        clearInterval(interval);
+        onAllImagesDisplayed?.();
+      }
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, [isActive, isPlaying, persons.length, totalDuration, SECONDS_PER_PERSON, onAllImagesDisplayed, onProgressUpdate]);
+
+  const currentPerson = persons[currentIndex] || persons[0] || INITIAL_BIRTHDAY_PERSONS[0];
+
   // Launch celebration confetti when the slide becomes active
   useEffect(() => {
     if (!isActive) return;
@@ -223,18 +299,15 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
           <div className="px-3.5 py-1.5 rounded-full border border-pink-500/50 bg-pink-500/10 text-pink-300 text-xs sm:text-sm font-medium flex items-center gap-1.5">
             <span>🎉</span> <span>Celebration / <span className="font-['Noto_Sans_Devanagari',sans-serif]">वाढदिवस विशेष</span></span>
           </div>
-          <div className="text-slate-400 text-xs sm:text-sm tracking-wider font-mono hidden md:block">
-            Slide 01 of 10
-          </div>
         </div>
       </header>
 
       {/* CENTER STAGE: Birthday Message & Layout */}
       <main className="relative z-30 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center max-w-7xl mx-auto w-full my-2">
         
-        {/* LEFT COLUMN: Employee Photo Frame & Celebration Badges */}
+        {/* LEFT COLUMN: Employee Photo Frame with Rotating Carousel */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center">
-          {/* Framed Photo with Vibrant Palette Styling */}
+          {/* Framed Photo with Vibrant Palette Styling & Rotating Carousel */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0, rotate: -2 }}
             animate={{ scale: 1, opacity: 1, rotate: -1.5 }}
@@ -246,30 +319,98 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
             <div className="absolute -top-3 left-6 w-16 h-6 bg-pink-500/40 backdrop-blur-md -rotate-6 shadow-sm border border-pink-400/50 rounded-sm" />
             <div className="absolute -top-3 right-6 w-16 h-6 bg-teal-500/40 backdrop-blur-md rotate-6 shadow-sm border border-teal-400/50 rounded-sm" />
 
-            {/* Employee Portrait */}
-            <div className="relative aspect-[4/4] rounded-xl overflow-hidden bg-slate-950 border border-white/10">
-              {/* Authentic Photo Matching Page 1 */}
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-                alt="Ms. Priya Sharma / कु. प्रिया शर्मा"
-                className="w-full h-full object-cover object-top"
-                crossOrigin="anonymous"
-              />
-              {/* Corner celebration badge */}
-              <div className="absolute top-2 right-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white p-2 rounded-full shadow-lg border border-white/20">
-                <PartyPopper className="w-4 h-4" />
+            {/* Carousel Header Header Strip */}
+            <div className="flex items-center justify-between px-1 mb-2">
+              <div className="flex items-center gap-1.5 text-[11px] font-bold text-pink-300 font-mono tracking-wide">
+                <Sparkles className="w-3.5 h-3.5 text-pink-400 animate-spin" style={{ animationDuration: '8s' }} />
+                <span>TODAY&apos;S CELEBRATION</span>
+              </div>
+              <div className="text-[10px] font-mono font-semibold text-teal-300 bg-slate-950/80 px-2 py-0.5 rounded-full border border-teal-500/30 flex items-center gap-1">
+                <Users className="w-3 h-3 text-teal-400" />
+                <span>{currentIndex + 1} of {persons.length}</span>
               </div>
             </div>
 
-            {/* Employee Name Plate */}
-            <div className="mt-3 text-center bg-slate-950/80 rounded-xl py-2 px-3 border border-white/10">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight flex items-center justify-center flex-wrap gap-1.5">
-                <span>Ms. Priya Sharma</span>
-                <span className="text-pink-300 font-medium font-['Noto_Sans_Devanagari',sans-serif] text-base sm:text-lg">(कु. प्रिया शर्मा)</span>
-              </h3>
-              <p className="text-xs sm:text-sm font-semibold tracking-wider text-teal-400 mt-0.5">
-                Production Dept. &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">उत्पादन विभाग</span>
-              </p>
+            {/* Employee Portrait Carousel Viewport (Automatic rotation without changing buttons) */}
+            <div className="relative aspect-[4/4] rounded-xl overflow-hidden bg-slate-950 border border-white/10 select-none">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentPerson.id}
+                  initial={{ opacity: 0, scale: 0.94, filter: 'blur(2px)' }}
+                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, scale: 1.06, filter: 'blur(2px)' }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="w-full h-full"
+                >
+                  <img
+                    src={currentPerson.imageUrl}
+                    alt={`${currentPerson.nameEn} / ${currentPerson.nameMr}`}
+                    className="w-full h-full object-cover object-top"
+                    crossOrigin="anonymous"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Corner celebration badge */}
+              <div className="absolute top-2 right-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white p-2 rounded-full shadow-lg border border-white/20 z-20">
+                <PartyPopper className="w-4 h-4" />
+              </div>
+
+              {/* Automatic Rotating Progress Bar Indicator for current employee photo */}
+              <div className="absolute bottom-0 inset-x-0 h-1 bg-black/50 z-20 overflow-hidden">
+                <motion.div
+                  key={`progress-${currentPerson.id}-${currentIndex}`}
+                  initial={{ width: '0%' }}
+                  animate={{ width: isActive && isPlaying ? '100%' : '0%' }}
+                  transition={{ duration: SECONDS_PER_PERSON, ease: 'linear' }}
+                  className="h-full bg-gradient-to-r from-pink-500 via-amber-400 to-teal-400"
+                />
+              </div>
+            </div>
+
+            {/* Employee Name Plate (Smoothly transitions with each person) */}
+            <div className="mt-3 text-center bg-slate-950/80 rounded-xl py-2 px-3 border border-white/10 min-h-[68px] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentPerson.id}
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  transition={{ duration: 0.28 }}
+                >
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight flex items-center justify-center flex-wrap gap-1.5">
+                    <span>{currentPerson.nameEn}</span>
+                    <span className="text-pink-300 font-medium font-['Noto_Sans_Devanagari',sans-serif] text-base sm:text-lg">
+                      ({currentPerson.nameMr})
+                    </span>
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold tracking-wider text-teal-400 mt-0.5">
+                    {currentPerson.deptEn} &bull;{' '}
+                    <span className="font-['Noto_Sans_Devanagari',sans-serif]">{currentPerson.deptMr}</span>
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Automatic Carousel Indicator Dots & Dynamic Sync Status */}
+            <div className="flex items-center justify-between px-1 mt-2.5">
+              <div className="flex items-center gap-1.5">
+                {persons.map((p, idx) => (
+                  <div
+                    key={p.id}
+                    className={`transition-all duration-300 rounded-full ${
+                      idx === currentIndex
+                        ? 'w-6 h-1.5 bg-gradient-to-r from-pink-500 to-teal-400 shadow-[0_0_8px_rgba(244,63,94,0.6)]'
+                        : 'w-1.5 h-1.5 bg-white/20'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="uppercase tracking-wider">Live Dynamic Server</span>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -343,54 +484,8 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
             </div>
           </motion.div>
 
-          {/* TABLE CELEBRATION ITEMS (Cake, Gift Box, Desk Note) */}
-          <div className="w-full grid grid-cols-3 gap-2.5 pt-0.5">
-            {/* 1. Birthday Cake with Lit Candles */}
-            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-white/10 hover:border-amber-400/40 transition flex items-center gap-2.5">
-              <div className="relative w-10 h-10 flex-shrink-0 bg-amber-500/20 border border-amber-400/30 rounded-lg flex items-center justify-center text-amber-300">
-                <Cake className="w-5 h-5 text-amber-300" />
-                {/* Lit candle flames simulation */}
-                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 flex gap-1">
-                  <span className="w-1 h-2.5 bg-amber-300 rounded-full animate-ping opacity-75" />
-                  <span className="w-1 h-2.5 bg-pink-400 rounded-full animate-bounce" />
-                </div>
-              </div>
-              <div className="text-left">
-                <p className="text-[10px] text-slate-400 font-semibold tracking-wider">
-                  Celebration &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">उत्सव</span>
-                </p>
-                <p className="text-xs sm:text-sm font-bold text-white leading-tight">
-                  Chocolate Cake <span className="text-amber-300 text-[11px] block font-['Noto_Sans_Devanagari',sans-serif] font-medium">चॉकलेट केक</span>
-                </p>
-              </div>
-            </div>
-
-            {/* 2. Gift Box */}
-            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-white/10 hover:border-pink-500/40 transition flex items-center gap-2.5">
-              <div className="w-10 h-10 flex-shrink-0 bg-pink-500/20 border border-pink-400/30 rounded-lg flex items-center justify-center text-pink-300">
-                <Gift className="w-5 h-5 text-pink-400 animate-pulse" />
-              </div>
-              <div className="text-left">
-                <p className="text-[10px] text-slate-400 font-semibold tracking-wider">
-                  Special Gift &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">खास भेट</span>
-                </p>
-                <p className="text-xs sm:text-sm font-bold text-white leading-tight">
-                  From Company <span className="text-pink-300 text-[11px] block font-['Noto_Sans_Devanagari',sans-serif] font-medium">कंपनीकडून</span>
-                </p>
-              </div>
-            </div>
-
-            {/* 3. Desk Note Card */}
-            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-2 sm:p-3 border border-white/10 hover:border-teal-400/40 transition flex flex-col justify-center text-center">
-              <span className="text-xs sm:text-sm font-bold text-amber-300 leading-tight">
-                Stay Happy &amp; Blessed
-              </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] leading-tight mt-0.5">
-                सदा आनंदी व सुखी राहा
-              </span>
-              <span className="text-[10px] text-pink-400 font-bold mt-0.5 tracking-wider">— ♡ —</span>
-            </div>
-          </div>
+          {/* EYE-CATCHY POPUP CAKE & GIFT CELEBRATION DISPLAY */}
+          <CelebrationDisplay currentPerson={currentPerson} isActive={isActive} />
         </div>
       </main>
 
@@ -402,6 +497,12 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
             Systems Online &bull; Employee Recognition Bulletin <span className="font-['Noto_Sans_Devanagari',sans-serif] text-slate-400">(कर्मचारी सन्मान फलक)</span>
           </span>
         </div>
+
+        {/* Slide 01 of 10 moved from top to below and hidden */}
+        <div className="hidden" aria-hidden="true">
+          Slide 01 of 10
+        </div>
+
         <div className="pr-48 hidden sm:block text-xs uppercase tracking-wider text-slate-400">
           Up Next: Safety Awareness <span className="font-['Noto_Sans_Devanagari',sans-serif]">(सुरक्षा मार्गदर्शक)</span> &bull; 10s
         </div>
