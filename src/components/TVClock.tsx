@@ -27,35 +27,35 @@ export const TVClock: React.FC = () => {
   return (
     <div
       id="tv-live-clock"
-      className="fixed bottom-3 right-4 z-50 pointer-events-auto select-none"
+      className="fixed bottom-2.5 right-3 z-50 pointer-events-auto select-none"
     >
-      <div className="bg-slate-950/75 backdrop-blur-md text-white border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.6)] rounded-2xl px-5 py-2.5 flex items-center gap-4 transition-all hover:border-teal-500/40">
+      <div className="bg-slate-950/80 backdrop-blur-md text-white border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.6)] rounded-xl px-3 sm:px-3.5 py-1.5 flex items-center gap-2.5 sm:gap-3 transition-all hover:border-teal-500/40">
         {/* Live indicator light matching Vibrant Palette status */}
-        <div className="flex flex-col items-center justify-center pr-3 border-r border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] animate-pulse" />
-            <span className="text-[10px] font-mono font-bold tracking-widest text-emerald-400 uppercase">
+        <div className="flex flex-col items-center justify-center pr-2.5 border-r border-white/10">
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_#10b981] animate-pulse" />
+            <span className="text-[9px] font-mono font-bold tracking-wider text-emerald-400 uppercase">
               LIVE
             </span>
           </div>
-          <span className="text-[9px] text-slate-400 font-mono tracking-wider mt-0.5 uppercase">
+          <span className="text-[8px] text-slate-400 font-mono tracking-wider uppercase mt-0.5">
             UNIT-I
           </span>
         </div>
 
-        {/* Digital Clock Display matching Vibrant Palette text typography */}
+        {/* Digital Clock Display - compact footprint with bold, high-contrast clarity */}
         <div className="flex flex-col items-end">
-          <div className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tighter tabular-nums flex items-baseline gap-1 text-white">
+          <div className="text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight tabular-nums flex items-baseline gap-0.5 text-white leading-none">
             <span>{displayHours}:{minutes}</span>
-            <span className="text-lg sm:text-xl text-slate-500 font-normal">:{seconds}</span>
-            <span className="text-xs text-teal-400 font-mono tracking-wider font-semibold ml-1 px-1.5 py-0.5 rounded bg-teal-500/10 border border-teal-500/30 uppercase">
+            <span className="text-xs sm:text-sm text-slate-400 font-medium">:{seconds}</span>
+            <span className="text-[9px] sm:text-[10px] text-teal-300 font-mono tracking-wider font-bold ml-1 px-1 py-0.5 rounded bg-teal-500/15 border border-teal-500/30 uppercase leading-none">
               {ampm}
             </span>
           </div>
 
           {/* Date Stamp */}
-          <div className="text-slate-400 font-medium tracking-widest text-[10px] sm:text-[11px] uppercase mr-0.5 flex items-center gap-1.5">
-            <Calendar className="w-3 h-3 text-teal-400" />
+          <div className="text-slate-400 font-medium tracking-wider text-[9px] sm:text-[10px] uppercase mr-0.5 flex items-center gap-1 mt-1">
+            <Calendar className="w-2.5 h-2.5 text-teal-400" />
             <span>{formattedDate}</span>
           </div>
         </div>

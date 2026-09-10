@@ -16,7 +16,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 2,
     type: 'safety',
-    titleEn: 'WELDING SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "WELDING SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'वेल्डिंग सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -67,7 +67,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 3,
     type: 'safety',
-    titleEn: 'MACHINE SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "MACHINE SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'मशीन सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -127,7 +127,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 4,
     type: 'safety',
-    titleEn: 'FORK LIFT SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "FORK LIFT SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'फोर्कलिफ्ट सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -176,7 +176,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 5,
     type: 'safety',
-    titleEn: 'POWDER COATING SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "POWDER COATING SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'पावडर कोटिंग सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -227,7 +227,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 6,
     type: 'safety',
-    titleEn: 'CRANE OPERATOR SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "CRANE OPERATOR SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'क्रेन ऑपरेटर सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -273,7 +273,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 7,
     type: 'safety',
-    titleEn: 'ELECTRIC SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "ELECTRIC SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'विद्युत सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -323,7 +323,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 8,
     type: 'safety',
-    titleEn: 'CHEMICAL SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "CHEMICAL SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'रासायनिक सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -374,7 +374,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 9,
     type: 'safety',
-    titleEn: 'HAZARDOUS WASTE SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "HAZARDOUS WASTE SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'हानिकारक कचरा सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',
@@ -425,7 +425,7 @@ export const SLIDES_DATA: SlideData[] = [
   {
     id: 10,
     type: 'safety',
-    titleEn: 'HAZARDOUS WASTE SAFETY AND IMPORTANCE OF PPES',
+    titleEn: "HAZARDOUS WASTE SAFETY AND IMPORTANCE OF PPE's",
     titleMr: 'हानिकारक कचरा सुरक्षा आणि पीपीई चे महत्त्व',
     companyName: 'SAVERA AUTO COMPS PVT LTD',
     unit: 'UNIT-I',

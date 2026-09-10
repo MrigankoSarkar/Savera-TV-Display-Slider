@@ -121,7 +121,7 @@ export const TVControlBar: React.FC<TVControlBarProps> = ({
           <div className="flex items-center gap-1 border-r border-white/10 pr-3">
             <button
               onClick={onPrev}
-              title="Previous Slide (Left Arrow)"
+              title="Previous Slide (मागील स्लाइड) [←]"
               className="p-1.5 rounded-lg hover:bg-white/10 text-slate-300 hover:text-white transition"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -129,7 +129,7 @@ export const TVControlBar: React.FC<TVControlBarProps> = ({
 
             <button
               onClick={onTogglePlay}
-              title={isPlaying ? 'Pause Slider (Space)' : 'Play Slider (Space)'}
+              title={isPlaying ? 'Pause Slider (थांबवा) [Space]' : 'Play Slider (सुरू करा) [Space]'}
               className={`p-2 rounded-xl transition ${
                 isPlaying
                   ? 'bg-gradient-to-r from-indigo-500 to-teal-400 text-white font-bold shadow-[0_0_12px_rgba(20,184,166,0.5)]'
@@ -141,7 +141,7 @@ export const TVControlBar: React.FC<TVControlBarProps> = ({
 
             <button
               onClick={onNext}
-              title="Next Slide (Right Arrow)"
+              title="Next Slide (पुढील स्लाइड) [→]"
               className="p-1.5 rounded-lg hover:bg-white/10 text-slate-300 hover:text-white transition"
             >
               <ChevronRight className="w-5 h-5" />
@@ -164,7 +164,7 @@ export const TVControlBar: React.FC<TVControlBarProps> = ({
                         : 'bg-gradient-to-r from-indigo-500 to-teal-400 text-white shadow-[0_0_12px_rgba(20,184,166,0.6)] scale-105'
                       : 'bg-white/5 border border-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
                   }`}
-                  title={slide.titleEn}
+                  title={`${slide.titleEn} (${slide.titleMr})`}
                 >
                   {isBirthday && <Sparkles className="w-3 h-3 text-pink-200" />}
                   <span>{slide.id}</span>
@@ -179,19 +179,19 @@ export const TVControlBar: React.FC<TVControlBarProps> = ({
             <select
               value={intervalDuration}
               onChange={(e) => onSelectDuration(Number(e.target.value))}
-              title="Slide Display Duration (Default 10s)"
+              title="Slide Duration (कालावधी): Default 10s"
               className="bg-slate-900 border border-white/10 text-xs font-mono font-medium rounded-lg px-2 py-1 text-slate-300 hover:text-white focus:outline-none focus:border-teal-400"
             >
-              <option value={5}>5s</option>
-              <option value={10}>10s (TV Default)</option>
-              <option value={15}>15s</option>
-              <option value={20}>20s</option>
+              <option value={5}>5s (५ से.)</option>
+              <option value={10}>10s (१० से. TV)</option>
+              <option value={15}>15s (१५ से.)</option>
+              <option value={20}>20s (२० से.)</option>
             </select>
 
             {/* Fullscreen Button */}
             <button
               onClick={onToggleFullscreen}
-              title={isFullscreen ? 'Exit Fullscreen' : 'Enter TV Fullscreen (F)'}
+              title={isFullscreen ? 'Exit Fullscreen (पूर्ण स्क्रीन बंद)' : 'TV Fullscreen (पूर्ण स्क्रीन) [F]'}
               className="p-1.5 rounded-lg hover:bg-white/10 text-slate-300 hover:text-teal-400 transition"
             >
               {isFullscreen ? (

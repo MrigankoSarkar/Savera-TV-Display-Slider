@@ -57,10 +57,10 @@ export const SafetySlide: React.FC<SafetySlideProps> = ({ slide, isActive }) => 
             <SaveraLogo size="sm" />
             <div className="text-center">
               <span className="block text-xs sm:text-sm font-bold text-white tracking-wider font-['Montserrat',sans-serif]">
-                SAVERA AUTO COMPS PVT LTD
+                SAVERA AUTO COMPS PVT LTD <span className="font-['Noto_Sans_Devanagari',sans-serif] text-slate-300 font-normal">| सावेरा ऑटो कॉम्प्स प्रा. लि.</span>
               </span>
               <span className="text-[11px] font-mono font-semibold text-teal-400 tracking-widest uppercase">
-                {slide.unit}
+                {slide.unit} &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif] font-normal">युनिट - १</span>
               </span>
             </div>
           </div>
@@ -227,10 +227,10 @@ export const SafetySlide: React.FC<SafetySlideProps> = ({ slide, isActive }) => 
               <div className="w-2.5 h-2.5 rounded-full bg-teal-400 shadow-[0_0_10px_#2dd4bf] animate-ping" />
               <div>
                 <h4 className="text-base sm:text-lg lg:text-xl font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-indigo-300 font-['Montserrat',sans-serif]">
-                  {slide.safetyFirstText.en}
+                  {slide.safetyFirstText.en} &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">सुरक्षा प्रथम</span>
                 </h4>
-                <p className="text-xs sm:text-sm font-bold text-slate-200 font-['Noto_Sans_Devanagari']">
-                  {slide.safetyFirstText.mr}
+                <p className="text-xs sm:text-sm font-bold text-slate-200 font-['Noto_Sans_Devanagari',sans-serif]">
+                  {slide.safetyFirstText.mr} <span className="font-sans text-teal-300 font-semibold text-xs ml-1">(Stay Alert, Stay Safe)</span>
                 </p>
               </div>
               <div className="w-2.5 h-2.5 rounded-full bg-teal-400 shadow-[0_0_10px_#2dd4bf] animate-ping" />
@@ -242,8 +242,10 @@ export const SafetySlide: React.FC<SafetySlideProps> = ({ slide, isActive }) => 
         <div className="lg:col-span-5 bg-slate-900/70 backdrop-blur-md rounded-2xl border border-white/10 p-2 sm:p-3 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl">
           {/* Savera Personal Protective Equipment Badge Header */}
           <div className="absolute top-3 right-3 z-30 flex items-center gap-2 bg-slate-950/80 px-3 py-1 rounded-full border border-teal-500/30">
-            <span className="text-[10px] font-mono font-bold text-teal-400 uppercase tracking-widest">
-              PPE MANDATE
+            <span className="text-[10px] font-mono font-bold text-teal-400 uppercase tracking-widest flex items-center gap-1.5">
+              <span>PPE MANDATE</span>
+              <span className="text-slate-500 font-sans">&bull;</span>
+              <span className="font-['Noto_Sans_Devanagari',sans-serif]">पीपीई नियम</span>
             </span>
           </div>
 
@@ -262,14 +264,15 @@ export const SafetySlide: React.FC<SafetySlideProps> = ({ slide, isActive }) => 
       <footer className="relative z-20 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/10">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
-          <span className="text-xs font-medium text-slate-300 uppercase tracking-widest">
-            EHS Division &bull; Safety Policy Compliance
+          <span className="text-xs font-medium text-slate-300 tracking-wider flex items-center gap-1 flex-wrap">
+            <span className="uppercase tracking-widest">EHS Division &bull; Safety Policy Compliance</span>
+            <span className="font-['Noto_Sans_Devanagari',sans-serif] text-slate-400 text-[11px]">(ईएचएस विभाग &bull; सुरक्षा नियम पालन)</span>
           </span>
         </div>
 
         {/* Note space for bottom right clock */}
-        <div className="pr-48 text-xs font-mono uppercase tracking-widest text-slate-500 hidden sm:block">
-          Duration: 10s &bull; Slide {slide.id} of 10
+        <div className="pr-48 text-xs font-mono uppercase tracking-widest text-slate-400 hidden sm:block">
+          Duration: 10s &bull; Slide 0{slide.id} of 10 <span className="font-['Noto_Sans_Devanagari',sans-serif] text-[11px]">(स्लाइड ०{slide.id}/१०)</span>
         </div>
       </footer>
     </div>

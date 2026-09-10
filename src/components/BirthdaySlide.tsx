@@ -208,25 +208,23 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
       {/* TOP HEADER: Vibrant Palette Glassmorphic Corporate Header */}
       <header className="relative z-30 h-16 sm:h-20 flex items-center justify-between px-4 sm:px-8 border-b border-white/10 bg-slate-950/60 backdrop-blur-md rounded-2xl">
         <div className="flex items-center gap-3.5">
-          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-teal-400 rounded-lg shadow-lg flex items-center justify-center font-black text-xl text-white font-['Noto_Sans_Devanagari',sans-serif]">
-            सा
-          </div>
+          <SaveraLogo size="sm" />
           <div>
-            <span className="text-base sm:text-lg lg:text-xl font-bold tracking-tight text-white block font-['Noto_Sans_Devanagari',sans-serif]">
-              सावेरा ऑटो कॉम्प्स प्रा. लि.
+            <span className="text-sm sm:text-base lg:text-lg font-bold tracking-tight text-white block">
+              SAVERA AUTO COMPS PVT LTD <span className="text-slate-400 font-normal text-xs sm:text-sm font-['Noto_Sans_Devanagari',sans-serif]">| सावेरा ऑटो कॉम्प्स प्रा. लि.</span>
             </span>
             <span className="text-xs text-teal-400 tracking-wider block font-['Noto_Sans_Devanagari',sans-serif]">
-              युनिट - १ &bull; छत्रपती संभाजीनगर
+              UNIT - I &bull; Chhatrapati Sambhajinagar (युनिट - १ &bull; छत्रपती संभाजीनगर)
             </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 font-['Noto_Sans_Devanagari',sans-serif]">
-          <div className="px-4 py-1.5 rounded-full border border-pink-500/50 bg-pink-500/10 text-pink-400 text-xs sm:text-sm font-medium flex items-center gap-1.5">
-            <span>🎉</span> वाढदिवस विशेष
+        <div className="flex items-center gap-3">
+          <div className="px-3.5 py-1.5 rounded-full border border-pink-500/50 bg-pink-500/10 text-pink-300 text-xs sm:text-sm font-medium flex items-center gap-1.5">
+            <span>🎉</span> <span>Celebration / <span className="font-['Noto_Sans_Devanagari',sans-serif]">वाढदिवस विशेष</span></span>
           </div>
-          <div className="text-slate-400 text-xs sm:text-sm tracking-wider hidden md:block">
-            स्लाइड ०१ / १०
+          <div className="text-slate-400 text-xs sm:text-sm tracking-wider font-mono hidden md:block">
+            Slide 01 of 10
           </div>
         </div>
       </header>
@@ -253,7 +251,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
               {/* Authentic Photo Matching Page 1 */}
               <img
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-                alt="कु. प्रिया शर्मा"
+                alt="Ms. Priya Sharma / कु. प्रिया शर्मा"
                 className="w-full h-full object-cover object-top"
                 crossOrigin="anonymous"
               />
@@ -264,19 +262,20 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
             </div>
 
             {/* Employee Name Plate */}
-            <div className="mt-3 text-center bg-slate-950/80 rounded-xl py-2.5 px-3 border border-white/10 font-['Noto_Sans_Devanagari',sans-serif]">
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-100 tracking-tight">
-                कु. प्रिया शर्मा
+            <div className="mt-3 text-center bg-slate-950/80 rounded-xl py-2 px-3 border border-white/10">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight flex items-center justify-center flex-wrap gap-1.5">
+                <span>Ms. Priya Sharma</span>
+                <span className="text-pink-300 font-medium font-['Noto_Sans_Devanagari',sans-serif] text-base sm:text-lg">(कु. प्रिया शर्मा)</span>
               </h3>
               <p className="text-xs sm:text-sm font-semibold tracking-wider text-teal-400 mt-0.5">
-                उत्पादन विभाग
+                Production Dept. &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">उत्पादन विभाग</span>
               </p>
             </div>
           </motion.div>
         </div>
 
         {/* RIGHT COLUMN: Happy Birthday Calligraphy & TV Message Screen */}
-        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-4">
+        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-3.5">
           
           {/* Main "Happy Birthday" Text with Celebratory Sparkles */}
           <div className="relative w-full">
@@ -287,16 +286,21 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
               className="space-y-1"
             >
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Sparkles className="w-5 h-5 text-pink-400 animate-spin" style={{ animationDuration: '6s' }} />
-                <h2 className="text-rose-500 font-bold tracking-[0.2em] text-xs sm:text-sm uppercase font-['Noto_Sans_Devanagari',sans-serif]">
-                  उत्कृष्टतेचा गौरव
+                <Sparkles className="w-4 h-4 text-pink-400 animate-spin" style={{ animationDuration: '6s' }} />
+                <h2 className="text-rose-400 font-bold tracking-[0.2em] text-xs sm:text-sm uppercase">
+                  CELEBRATING EXCELLENCE &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">उत्कृष्टतेचा गौरव</span>
                 </h2>
-                <Sparkles className="w-5 h-5 text-teal-400 animate-pulse" />
+                <Sparkles className="w-4 h-4 text-teal-400 animate-pulse" />
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.15] tracking-normal text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-300 font-['Noto_Sans_Devanagari',sans-serif]">
-                वाढदिवसाच्या<br />हार्दिक शुभेच्छा!
-              </h1>
+              <div>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-200">
+                  HAPPY BIRTHDAY!
+                </h1>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-teal-300 to-amber-300 font-['Noto_Sans_Devanagari',sans-serif] mt-0.5">
+                  वाढदिवसाच्या हार्दिक शुभेच्छा!
+                </div>
+              </div>
             </motion.div>
           </div>
 
@@ -305,66 +309,84 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full bg-slate-900/70 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden font-['Noto_Sans_Devanagari',sans-serif]"
+            className="w-full bg-slate-900/70 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden"
           >
             {/* Top gradient accent line */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-pink-500 to-teal-400" />
             
-            <p className="text-lg sm:text-2xl font-normal text-slate-100 leading-relaxed">
-              &ldquo;हा विशेष दिवस आपल्या जीवनात{' '}
-              <span className="font-bold text-pink-400">आनंद</span>,{' '}
-              <span className="font-bold text-teal-300">उत्तम आरोग्य</span>,{' '}
-              <span className="font-bold text-amber-300">दीर्घायुष्य व यश</span> आणि हसण्याची अनेक कारणे घेऊन येवो.&rdquo;
-            </p>
+            <div className="space-y-2">
+              <p className="text-sm sm:text-base lg:text-lg font-normal text-slate-100 leading-snug">
+                &ldquo;May your special day bring you{' '}
+                <span className="font-semibold text-pink-400">happiness</span>,{' '}
+                <span className="font-semibold text-teal-300">good health</span>,{' '}
+                <span className="font-semibold text-amber-300">success</span> and many more reasons to smile.&rdquo;
+              </p>
 
-            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
-              <span className="text-lg sm:text-xl font-bold text-pink-400 flex items-center gap-2">
-                आपला दिवस आनंदी जावो! 😊
+              <p className="text-xs sm:text-sm lg:text-base font-normal text-slate-300 leading-relaxed font-['Noto_Sans_Devanagari',sans-serif] pt-1.5 border-t border-white/5">
+                &ldquo;हा विशेष दिवस आपल्या जीवनात{' '}
+                <span className="font-semibold text-pink-400">आनंद</span>,{' '}
+                <span className="font-semibold text-teal-300">उत्तम आरोग्य</span>,{' '}
+                <span className="font-semibold text-amber-300">दीर्घायुष्य व यश</span> आणि हसण्याची अनेक कारणे घेऊन येवो.&rdquo;
+              </p>
+            </div>
+
+            <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between">
+              <span className="text-sm sm:text-base font-bold text-pink-400 flex items-center gap-1.5 flex-wrap">
+                <span>Enjoy your day! 😊</span>
+                <span className="text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] text-xs sm:text-sm font-medium">(आपला दिवस आनंदी जावो!)</span>
               </span>
               <div className="flex items-center gap-1 text-pink-400">
-                <Heart className="w-5 h-5 fill-pink-500 animate-bounce" />
-                <Heart className="w-4 h-4 fill-amber-400" />
-                <Heart className="w-5 h-5 fill-teal-400" />
+                <Heart className="w-4 h-4 fill-pink-500 animate-bounce" />
+                <Heart className="w-3.5 h-3.5 fill-amber-400" />
+                <Heart className="w-4 h-4 fill-teal-400" />
               </div>
             </div>
           </motion.div>
 
           {/* TABLE CELEBRATION ITEMS (Cake, Gift Box, Desk Note) */}
-          <div className="w-full grid grid-cols-3 gap-3 pt-1">
+          <div className="w-full grid grid-cols-3 gap-2.5 pt-0.5">
             {/* 1. Birthday Cake with Lit Candles */}
-            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:border-amber-400/40 transition flex items-center gap-3">
-              <div className="relative w-11 h-11 flex-shrink-0 bg-amber-500/20 border border-amber-400/30 rounded-lg flex items-center justify-center text-amber-300">
-                <Cake className="w-6 h-6 text-amber-300" />
+            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-white/10 hover:border-amber-400/40 transition flex items-center gap-2.5">
+              <div className="relative w-10 h-10 flex-shrink-0 bg-amber-500/20 border border-amber-400/30 rounded-lg flex items-center justify-center text-amber-300">
+                <Cake className="w-5 h-5 text-amber-300" />
                 {/* Lit candle flames simulation */}
                 <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 flex gap-1">
-                  <span className="w-1.5 h-3 bg-amber-300 rounded-full animate-ping opacity-75" />
-                  <span className="w-1.5 h-3 bg-pink-400 rounded-full animate-bounce" />
+                  <span className="w-1 h-2.5 bg-amber-300 rounded-full animate-ping opacity-75" />
+                  <span className="w-1 h-2.5 bg-pink-400 rounded-full animate-bounce" />
                 </div>
               </div>
-              <div className="text-left font-['Noto_Sans_Devanagari',sans-serif]">
-                <p className="text-[10px] text-slate-400 font-semibold tracking-wider">उत्सव</p>
-                <p className="text-xs sm:text-sm font-bold text-white">चॉकलेट केक</p>
+              <div className="text-left">
+                <p className="text-[10px] text-slate-400 font-semibold tracking-wider">
+                  Celebration &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">उत्सव</span>
+                </p>
+                <p className="text-xs sm:text-sm font-bold text-white leading-tight">
+                  Chocolate Cake <span className="text-amber-300 text-[11px] block font-['Noto_Sans_Devanagari',sans-serif] font-medium">चॉकलेट केक</span>
+                </p>
               </div>
             </div>
 
             {/* 2. Gift Box */}
-            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:border-pink-500/40 transition flex items-center gap-3">
-              <div className="w-11 h-11 flex-shrink-0 bg-pink-500/20 border border-pink-400/30 rounded-lg flex items-center justify-center text-pink-300">
-                <Gift className="w-6 h-6 text-pink-400 animate-pulse" />
+            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-white/10 hover:border-pink-500/40 transition flex items-center gap-2.5">
+              <div className="w-10 h-10 flex-shrink-0 bg-pink-500/20 border border-pink-400/30 rounded-lg flex items-center justify-center text-pink-300">
+                <Gift className="w-5 h-5 text-pink-400 animate-pulse" />
               </div>
-              <div className="text-left font-['Noto_Sans_Devanagari',sans-serif]">
-                <p className="text-[10px] text-slate-400 font-semibold tracking-wider">खास भेट</p>
-                <p className="text-xs sm:text-sm font-bold text-white">कंपनीकडून</p>
+              <div className="text-left">
+                <p className="text-[10px] text-slate-400 font-semibold tracking-wider">
+                  Special Gift &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">खास भेट</span>
+                </p>
+                <p className="text-xs sm:text-sm font-bold text-white leading-tight">
+                  From Company <span className="text-pink-300 text-[11px] block font-['Noto_Sans_Devanagari',sans-serif] font-medium">कंपनीकडून</span>
+                </p>
               </div>
             </div>
 
             {/* 3. Desk Note Card */}
-            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-3 border border-white/10 hover:border-teal-400/40 transition flex flex-col justify-center text-center font-['Noto_Sans_Devanagari',sans-serif]">
-              <span className="text-xs font-bold text-amber-300 leading-tight">
-                सदा आनंदी राहा
+            <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-2 sm:p-3 border border-white/10 hover:border-teal-400/40 transition flex flex-col justify-center text-center">
+              <span className="text-xs sm:text-sm font-bold text-amber-300 leading-tight">
+                Stay Happy &amp; Blessed
               </span>
-              <span className="text-xs font-bold text-amber-300 leading-tight">
-                सदा सुखी राहा
+              <span className="text-[11px] sm:text-xs font-semibold text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] leading-tight mt-0.5">
+                सदा आनंदी व सुखी राहा
               </span>
               <span className="text-[10px] text-pink-400 font-bold mt-0.5 tracking-wider">— ♡ —</span>
             </div>
@@ -373,15 +395,15 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
       </main>
 
       {/* BOTTOM FOOTER BAR */}
-      <footer className="relative z-30 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/10 font-['Noto_Sans_Devanagari',sans-serif]">
+      <footer className="relative z-30 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-white/10">
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
           <span className="text-xs font-medium text-slate-300 tracking-wider">
-            प्रणाली सक्रिय &bull; कर्मचारी सन्मान फलक
+            Systems Online &bull; Employee Recognition Bulletin <span className="font-['Noto_Sans_Devanagari',sans-serif] text-slate-400">(कर्मचारी सन्मान फलक)</span>
           </span>
         </div>
         <div className="pr-48 hidden sm:block text-xs uppercase tracking-wider text-slate-400">
-          पुढील: सुरक्षा मार्गदर्शक &bull; १० सेकंद
+          Up Next: Safety Awareness <span className="font-['Noto_Sans_Devanagari',sans-serif]">(सुरक्षा मार्गदर्शक)</span> &bull; 10s
         </div>
       </footer>
     </div>

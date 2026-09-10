@@ -500,7 +500,10 @@ export const SafetyIllustration: React.FC<SafetyIllustrationProps> = ({
       <div className="mt-2 text-center">
         <span className="inline-flex items-center gap-1.5 text-xs text-slate-400 font-mono tracking-wider uppercase">
           <Activity className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-          Mandatory PPE Inspection Standard
+          <span>Mandatory PPE Inspection Standard</span>
+          <span className="font-['Noto_Sans_Devanagari',sans-serif] text-slate-400 font-normal">
+            (अनिवार्य पीपीई तपासणी मानक)
+          </span>
         </span>
       </div>
     </div>
