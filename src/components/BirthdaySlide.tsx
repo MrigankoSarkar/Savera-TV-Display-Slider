@@ -169,7 +169,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
   return (
     <div
       id="birthday-slide-container"
-      className="relative w-full h-full overflow-hidden bg-slate-950 text-white font-sans flex flex-col justify-between p-4 lg:p-6 select-none"
+      className="relative w-full h-full overflow-hidden bg-slate-950 text-white font-sans flex flex-col justify-between p-2.5 sm:p-3.5 lg:p-4 select-none"
     >
       {/* VIBRANT PALETTE AMBIENT GLOWING SHAPES */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -295,7 +295,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 mr-0 md:mr-44">
           <div className="px-3.5 py-1.5 rounded-full border border-pink-500/50 bg-pink-500/10 text-pink-300 text-xs sm:text-sm font-medium flex items-center gap-1.5">
             <span>🎉</span> <span>Celebration / <span className="font-['Noto_Sans_Devanagari',sans-serif]">वाढदिवस विशेष</span></span>
           </div>
@@ -303,7 +303,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
       </header>
 
       {/* CENTER STAGE: Birthday Message & Layout */}
-      <main className="relative z-30 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center max-w-7xl mx-auto w-full my-2">
+      <main className="relative z-30 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-6 items-center max-w-[1850px] mx-auto w-full my-1.5 min-h-0">
         
         {/* LEFT COLUMN: Employee Photo Frame with Rotating Carousel */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center">
@@ -313,7 +313,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
             animate={{ scale: 1, opacity: 1, rotate: -1.5 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             whileHover={{ rotate: 0, scale: 1.02 }}
-            className="relative bg-slate-900/80 backdrop-blur-md p-3.5 pb-4 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 max-w-xs sm:max-w-sm w-full"
+            className="relative bg-slate-900/80 backdrop-blur-md p-3.5 sm:p-4.5 pb-4 sm:pb-5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 max-w-sm sm:max-w-md lg:max-w-lg w-full"
           >
             {/* Washi-Tape Accents */}
             <div className="absolute -top-3 left-6 w-16 h-6 bg-pink-500/40 backdrop-blur-md -rotate-6 shadow-sm border border-pink-400/50 rounded-sm" />
@@ -321,12 +321,12 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
 
             {/* Carousel Header Header Strip */}
             <div className="flex items-center justify-between px-1 mb-2">
-              <div className="flex items-center gap-1.5 text-[11px] font-bold text-pink-300 font-mono tracking-wide">
+              <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-pink-300 font-mono tracking-wide">
                 <Sparkles className="w-3.5 h-3.5 text-pink-400 animate-spin" style={{ animationDuration: '8s' }} />
                 <span>TODAY&apos;S CELEBRATION</span>
               </div>
-              <div className="text-[10px] font-mono font-semibold text-teal-300 bg-slate-950/80 px-2 py-0.5 rounded-full border border-teal-500/30 flex items-center gap-1">
-                <Users className="w-3 h-3 text-teal-400" />
+              <div className="text-[11px] sm:text-xs font-mono font-semibold text-teal-300 bg-slate-950/80 px-2.5 py-0.5 rounded-full border border-teal-500/30 flex items-center gap-1">
+                <Users className="w-3.5 h-3.5 text-teal-400" />
                 <span>{currentIndex + 1} of {persons.length}</span>
               </div>
             </div>
@@ -347,6 +347,15 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
                     alt={`${currentPerson.nameEn} / ${currentPerson.nameMr}`}
                     className="w-full h-full object-cover object-top"
                     crossOrigin="anonymous"
+                    loading="eager"
+                    decoding="async"
+                    onError={(e) => {
+                      // Graceful fallback to company logo if remote image fails
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (!target.src.includes('logo.jpg')) {
+                        target.src = '/logo.jpg';
+                      }
+                    }}
                   />
                 </motion.div>
               </AnimatePresence>
@@ -369,7 +378,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
             </div>
 
             {/* Employee Name Plate (Smoothly transitions with each person) */}
-            <div className="mt-3 text-center bg-slate-950/80 rounded-xl py-2 px-3 border border-white/10 min-h-[68px] flex flex-col justify-center">
+            <div className="mt-3 text-center bg-slate-950/85 rounded-xl py-2.5 px-3 border border-white/10 min-h-[72px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentPerson.id}
@@ -378,13 +387,13 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
                   exit={{ opacity: 0, y: -5 }}
                   transition={{ duration: 0.28 }}
                 >
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-100 tracking-tight flex items-center justify-center flex-wrap gap-1.5">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-100 tracking-tight flex items-center justify-center flex-wrap gap-1.5">
                     <span>{currentPerson.nameEn}</span>
-                    <span className="text-pink-300 font-medium font-['Noto_Sans_Devanagari',sans-serif] text-base sm:text-lg">
+                    <span className="text-pink-300 font-medium font-['Noto_Sans_Devanagari',sans-serif] text-base sm:text-lg lg:text-xl">
                       ({currentPerson.nameMr})
                     </span>
                   </h3>
-                  <p className="text-xs sm:text-sm font-semibold tracking-wider text-teal-400 mt-0.5">
+                  <p className="text-xs sm:text-sm lg:text-base font-semibold tracking-wider text-teal-400 mt-0.5">
                     {currentPerson.deptEn} &bull;{' '}
                     <span className="font-['Noto_Sans_Devanagari',sans-serif]">{currentPerson.deptMr}</span>
                   </p>
@@ -392,8 +401,8 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
               </AnimatePresence>
             </div>
 
-            {/* Automatic Carousel Indicator Dots & Dynamic Sync Status */}
-            <div className="flex items-center justify-between px-1 mt-2.5">
+            {/* Automatic Carousel Indicator Dots */}
+            <div className="flex items-center justify-center px-1 mt-2.5">
               <div className="flex items-center gap-1.5">
                 {persons.map((p, idx) => (
                   <div
@@ -406,17 +415,12 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
                   />
                 ))}
               </div>
-
-              <div className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="uppercase tracking-wider">Live Dynamic Server</span>
-              </div>
             </div>
           </motion.div>
         </div>
 
         {/* RIGHT COLUMN: Happy Birthday Calligraphy & TV Message Screen */}
-        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-3.5">
+        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-3.5 sm:space-y-4">
           
           {/* Main "Happy Birthday" Text with Celebratory Sparkles */}
           <div className="relative w-full">
@@ -428,17 +432,17 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
             >
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <Sparkles className="w-4 h-4 text-pink-400 animate-spin" style={{ animationDuration: '6s' }} />
-                <h2 className="text-rose-400 font-bold tracking-[0.2em] text-xs sm:text-sm uppercase">
+                <h2 className="text-rose-400 font-bold tracking-[0.2em] text-xs sm:text-sm lg:text-base uppercase">
                   CELEBRATING EXCELLENCE &bull; <span className="font-['Noto_Sans_Devanagari',sans-serif]">उत्कृष्टतेचा गौरव</span>
                 </h2>
                 <Sparkles className="w-4 h-4 text-teal-400 animate-pulse" />
               </div>
 
               <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-200">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-200">
                   HAPPY BIRTHDAY!
                 </h1>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-teal-300 to-amber-300 font-['Noto_Sans_Devanagari',sans-serif] mt-0.5">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-teal-300 to-amber-300 font-['Noto_Sans_Devanagari',sans-serif] mt-0.5">
                   वाढदिवसाच्या हार्दिक शुभेच्छा!
                 </div>
               </div>
@@ -450,20 +454,20 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full bg-slate-900/70 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-[0_15px_40px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden"
+            className="w-full bg-slate-900/70 backdrop-blur-md rounded-2xl p-4 sm:p-5 lg:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.5)] border border-white/10 relative overflow-hidden"
           >
             {/* Top gradient accent line */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-pink-500 to-teal-400" />
             
-            <div className="space-y-2">
-              <p className="text-sm sm:text-base lg:text-lg font-normal text-slate-100 leading-snug">
+            <div className="space-y-2.5">
+              <p className="text-base sm:text-lg lg:text-xl font-normal text-slate-100 leading-relaxed">
                 &ldquo;May your special day bring you{' '}
                 <span className="font-semibold text-pink-400">happiness</span>,{' '}
                 <span className="font-semibold text-teal-300">good health</span>,{' '}
                 <span className="font-semibold text-amber-300">success</span> and many more reasons to smile.&rdquo;
               </p>
 
-              <p className="text-xs sm:text-sm lg:text-base font-normal text-slate-300 leading-relaxed font-['Noto_Sans_Devanagari',sans-serif] pt-1.5 border-t border-white/5">
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg font-normal text-slate-300 leading-relaxed font-['Noto_Sans_Devanagari',sans-serif] pt-2 border-t border-white/5">
                 &ldquo;हा विशेष दिवस आपल्या जीवनात{' '}
                 <span className="font-semibold text-pink-400">आनंद</span>,{' '}
                 <span className="font-semibold text-teal-300">उत्तम आरोग्य</span>,{' '}
@@ -471,15 +475,14 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
               </p>
             </div>
 
-            <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between">
-              <span className="text-sm sm:text-base font-bold text-pink-400 flex items-center gap-1.5 flex-wrap">
+            <div className="mt-3.5 pt-2.5 border-t border-white/10 flex items-center justify-between">
+              <span className="text-sm sm:text-base lg:text-lg font-bold text-pink-400 flex items-center gap-1.5 flex-wrap">
                 <span>Enjoy your day! 😊</span>
-                <span className="text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] text-xs sm:text-sm font-medium">(आपला दिवस आनंदी जावो!)</span>
+                <span className="text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] text-xs sm:text-sm md:text-base font-medium">(आपला दिवस आनंदी जावो!)</span>
               </span>
               <div className="flex items-center gap-1 text-pink-400">
                 <Heart className="w-4 h-4 fill-pink-500 animate-bounce" />
-                <Heart className="w-3.5 h-3.5 fill-amber-400" />
-                <Heart className="w-4 h-4 fill-teal-400" />
+                <Heart className="w-3.5 h-3.5 fill-pink-400 animate-bounce delay-100" />
               </div>
             </div>
           </motion.div>
@@ -496,15 +499,6 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({
           <span className="text-xs font-medium text-slate-300 tracking-wider">
             Systems Online &bull; Employee Recognition Bulletin <span className="font-['Noto_Sans_Devanagari',sans-serif] text-slate-400">(कर्मचारी सन्मान फलक)</span>
           </span>
-        </div>
-
-        {/* Slide 01 of 10 moved from top to below and hidden */}
-        <div className="hidden" aria-hidden="true">
-          Slide 01 of 10
-        </div>
-
-        <div className="pr-48 hidden sm:block text-xs uppercase tracking-wider text-slate-400">
-          Up Next: Safety Awareness <span className="font-['Noto_Sans_Devanagari',sans-serif]">(सुरक्षा मार्गदर्शक)</span> &bull; 10s
         </div>
       </footer>
     </div>

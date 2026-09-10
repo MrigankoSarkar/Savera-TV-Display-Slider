@@ -5,6 +5,7 @@ import { BirthdaySlide } from './components/BirthdaySlide';
 import { SafetySlide } from './components/SafetySlide';
 import { TVClock } from './components/TVClock';
 import { TVControlBar } from './components/TVControlBar';
+import { preloadAllAppImages } from './utils/imagePreloader';
 
 export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,6 +82,11 @@ export default function App() {
         setIsFullscreen(false);
       }
     }
+  }, []);
+
+  // Immediately preload all safety illustrations and birthday images on boot for instant display
+  useEffect(() => {
+    preloadAllAppImages();
   }, []);
 
   // Listen to fullscreen changes (e.g. Esc key pressed)

@@ -50,6 +50,10 @@ export const SLIDES_DATA: SlideData[] = [
       en: 'CO2 Welder / Arc Welder',
       mr: 'सी.ओ.२ वेल्डर / आर्क वेल्डर',
     },
+    figHeading: {
+      en: 'CO2 Welder / Arc Welder',
+      mr: 'सी.ओ.२ वेल्डर / आर्क वेल्डर',
+    },
     roleType: 'welder',
     callouts: [
       { id: 'w1', labelEn: 'Face Shield', labelMr: 'फेस शील्ड', topPercent: 18, leftPercent: 50, side: 'right' },
@@ -101,6 +105,10 @@ export const SLIDES_DATA: SlideData[] = [
       en: 'Machine Operator',
       mr: 'मशीन ऑपरेटर',
       dept: 'Fabrication (फॅब्रिकेशन)',
+    },
+    figHeading: {
+      en: 'Machine Operator',
+      mr: 'मशीन ऑपरेटर',
     },
     roleType: 'machine',
     callouts: [
@@ -163,6 +171,10 @@ export const SLIDES_DATA: SlideData[] = [
       en: 'Forklift Operator',
       mr: 'फोर्क लिफ्ट ऑपरेटर',
     },
+    figHeading: {
+      en: 'Forklift Operator',
+      mr: 'फोर्कलिफ्ट ऑपरेटर',
+    },
     roleType: 'forklift',
     callouts: [
       { id: 'f1', labelEn: 'Safety Helmet', labelMr: 'हेल्मेट', topPercent: 20, leftPercent: 68, side: 'right' },
@@ -213,6 +225,10 @@ export const SLIDES_DATA: SlideData[] = [
       en: 'Coater',
       mr: 'कोटिंग करणारा व्यक्ती',
     },
+    figHeading: {
+      en: 'Coater (Powder Coating)',
+      mr: 'कोटर (पावडर कोटिंग)',
+    },
     roleType: 'powder_coating',
     callouts: [
       { id: 'pc1', labelEn: 'Safety Glasses', labelMr: 'सुरक्षा चष्मा', topPercent: 24, leftPercent: 30, side: 'left' },
@@ -258,6 +274,10 @@ export const SLIDES_DATA: SlideData[] = [
       mr: 'सुरक्षा प्रथम सतर्क रहा, सुरक्षित रहा',
     },
     safetyRoleTitle: {
+      en: 'Crane Operator',
+      mr: 'क्रेन ऑपरेटर',
+    },
+    figHeading: {
       en: 'Crane Operator',
       mr: 'क्रेन ऑपरेटर',
     },
@@ -308,6 +328,10 @@ export const SLIDES_DATA: SlideData[] = [
     safetyRoleTitle: {
       en: 'Electrician / Maintenance',
       mr: 'विद्युत तंत्रज्ञ / ऑपरेटर',
+    },
+    figHeading: {
+      en: 'Electrician (Electrical Safety)',
+      mr: 'विद्युत तंत्रज्ञ (इलेक्ट्रिकल सुरक्षा)',
     },
     roleType: 'electric',
     callouts: [
@@ -360,6 +384,10 @@ export const SLIDES_DATA: SlideData[] = [
       en: 'Chemical Handling',
       mr: 'रसायने हाताळणी करणारी व्यक्ती',
     },
+    figHeading: {
+      en: 'Chemical Handling Operator',
+      mr: 'रासायनिक हाताळणी ऑपरेटर',
+    },
     roleType: 'chemical',
     callouts: [
       { id: 'ch1', labelEn: 'Safety Glasses', labelMr: 'सुरक्षा चष्मा', topPercent: 24, leftPercent: 30, side: 'left' },
@@ -411,6 +439,10 @@ export const SLIDES_DATA: SlideData[] = [
       en: 'Hazardous Waste Handler',
       mr: 'हानिकारक कचरा हाताळणी करणारी व्यक्ती',
     },
+    figHeading: {
+      en: 'Hazardous Waste Handler',
+      mr: 'हानिकारक कचरा हाताळणी',
+    },
     roleType: 'hazardous_waste',
     callouts: [
       { id: 'hw1', labelEn: 'Safety Glasses', labelMr: 'सुरक्षा चष्मा', topPercent: 24, leftPercent: 30, side: 'left' },
@@ -455,6 +487,10 @@ export const SLIDES_DATA: SlideData[] = [
     safetyRoleTitle: {
       en: 'Hazardous Waste Management & 3R',
       mr: 'कचरा व्यवस्थापन आणि ३आर',
+    },
+    figHeading: {
+      en: '3R Principles (Reduce, Reuse, Recycle)',
+      mr: '३आर तत्त्वे (कचरा व्यवस्थापन)',
     },
     roleType: 'hazardous_waste_3r',
     has3RGraphic: true,

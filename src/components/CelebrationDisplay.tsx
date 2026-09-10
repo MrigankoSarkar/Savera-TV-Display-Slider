@@ -324,7 +324,7 @@ export const CelebrationDisplay: React.FC<CelebrationDisplayProps> = ({ currentP
   return (
     <>
       {/* 3-CARD CELEBRATION ITEMS WITH RICH ANIMATED CAKE & GIFT */}
-      <div className="w-full grid grid-cols-3 gap-2.5 pt-0.5 select-none">
+      <div className="w-full grid grid-cols-3 gap-2.5 sm:gap-3.5 pt-1 select-none">
         {/* 1. Eye-Catchy Birthday Cake Card */}
         <motion.div
           whileHover={{ scale: 1.025, y: -2 }}
@@ -332,7 +332,7 @@ export const CelebrationDisplay: React.FC<CelebrationDisplayProps> = ({ currentP
           onClick={() => handleOpenPopup('cake')}
           role="button"
           tabIndex={0}
-          className="group relative bg-gradient-to-br from-amber-500/15 via-slate-900/80 to-slate-950/90 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-amber-400/30 hover:border-amber-400 shadow-[0_4px_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-all cursor-pointer flex items-center gap-2.5 overflow-hidden"
+          className="group relative bg-gradient-to-br from-amber-500/15 via-slate-900/80 to-slate-950/90 backdrop-blur-md rounded-xl p-2.5 sm:p-3.5 border border-amber-400/30 hover:border-amber-400 shadow-[0_4px_20px_rgba(245,158,11,0.15)] hover:shadow-[0_0_25px_rgba(245,158,11,0.35)] transition-all cursor-pointer flex items-center gap-2.5 overflow-hidden"
           title="Click for Celebration Cake Pop-up (केक उत्सव पहा)"
         >
           {/* Subtle Shimmer Ray */}
@@ -345,16 +345,16 @@ export const CelebrationDisplay: React.FC<CelebrationDisplayProps> = ({ currentP
 
           <div className="text-left min-w-0 z-10">
             <div className="flex items-center gap-1">
-              <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-amber-300/90 flex items-center gap-1">
-                <Sparkles className="w-2.5 h-2.5 text-amber-300 animate-spin" style={{ animationDuration: '4s' }} />
+              <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-amber-300/90 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-amber-300 animate-spin" style={{ animationDuration: '4s' }} />
                 <span>Celebration</span>
               </span>
-              <span className="text-[9px] text-amber-400/80 font-['Noto_Sans_Devanagari',sans-serif]">&bull; उत्सव</span>
+              <span className="text-[10px] sm:text-xs text-amber-400/80 font-['Noto_Sans_Devanagari',sans-serif]">&bull; उत्सव</span>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-white leading-tight truncate mt-0.5">
+            <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight truncate mt-0.5">
               Birthday Cake
             </p>
-            <p className="text-[11px] font-semibold text-amber-300 font-['Noto_Sans_Devanagari',sans-serif] leading-none mt-0.5">
+            <p className="text-xs sm:text-sm font-semibold text-amber-300 font-['Noto_Sans_Devanagari',sans-serif] leading-none mt-0.5">
               वाढदिवसाचा केक 🎂
             </p>
           </div>
@@ -375,7 +375,7 @@ export const CelebrationDisplay: React.FC<CelebrationDisplayProps> = ({ currentP
           onClick={() => handleOpenPopup('gift')}
           role="button"
           tabIndex={0}
-          className="group relative bg-gradient-to-br from-pink-500/15 via-slate-900/80 to-slate-950/90 backdrop-blur-md rounded-xl p-2.5 sm:p-3 border border-pink-400/30 hover:border-pink-400 shadow-[0_4px_20px_rgba(236,72,153,0.15)] hover:shadow-[0_0_25px_rgba(236,72,153,0.35)] transition-all cursor-pointer flex items-center gap-2.5 overflow-hidden"
+          className="group relative bg-gradient-to-br from-pink-500/15 via-slate-900/80 to-slate-950/90 backdrop-blur-md rounded-xl p-2.5 sm:p-3.5 border border-pink-400/30 hover:border-pink-400 shadow-[0_4px_20px_rgba(236,72,153,0.15)] hover:shadow-[0_0_25px_rgba(236,72,153,0.35)] transition-all cursor-pointer flex items-center gap-2.5 overflow-hidden"
           title="Click for Celebration Gift Pop-up (भेटवस्तू उत्सव पहा)"
         >
           {/* Subtle Shimmer Ray */}
@@ -388,16 +388,16 @@ export const CelebrationDisplay: React.FC<CelebrationDisplayProps> = ({ currentP
 
           <div className="text-left min-w-0 z-10">
             <div className="flex items-center gap-1">
-              <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-pink-300/90 flex items-center gap-1">
-                <Heart className="w-2.5 h-2.5 fill-pink-400 text-pink-400 animate-pulse" />
+              <span className="text-[10px] sm:text-xs uppercase font-bold tracking-wider text-pink-300/90 flex items-center gap-1">
+                <Heart className="w-3 h-3 fill-pink-400 text-pink-400 animate-pulse" />
                 <span>Special Gift</span>
               </span>
-              <span className="text-[9px] text-pink-400/80 font-['Noto_Sans_Devanagari',sans-serif]">&bull; खास भेट</span>
+              <span className="text-[10px] sm:text-xs text-pink-400/80 font-['Noto_Sans_Devanagari',sans-serif]">&bull; खास भेट</span>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-white leading-tight truncate mt-0.5">
+            <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight truncate mt-0.5">
               From Company
             </p>
-            <p className="text-[11px] font-semibold text-pink-300 font-['Noto_Sans_Devanagari',sans-serif] leading-none mt-0.5">
+            <p className="text-xs sm:text-sm font-semibold text-pink-300 font-['Noto_Sans_Devanagari',sans-serif] leading-none mt-0.5">
               कंपनीकडून भेट 🎁
             </p>
           </div>
@@ -418,20 +418,20 @@ export const CelebrationDisplay: React.FC<CelebrationDisplayProps> = ({ currentP
           onClick={() => handleOpenPopup('both')}
           role="button"
           tabIndex={0}
-          className="group relative bg-gradient-to-br from-teal-500/15 via-slate-900/80 to-slate-950/90 backdrop-blur-md rounded-xl p-2 sm:p-3 border border-teal-400/30 hover:border-teal-400 shadow-[0_4px_20px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.35)] transition-all cursor-pointer flex flex-col justify-center text-center overflow-hidden"
+          className="group relative bg-gradient-to-br from-teal-500/15 via-slate-900/80 to-slate-950/90 backdrop-blur-md rounded-xl p-2.5 sm:p-3.5 border border-teal-400/30 hover:border-teal-400 shadow-[0_4px_20px_rgba(20,184,166,0.15)] hover:shadow-[0_0_25px_rgba(20,184,166,0.35)] transition-all cursor-pointer flex flex-col justify-center text-center overflow-hidden"
           title="Click to view full celebration popup (संपूर्ण उत्सव पहा)"
         >
-          <div className="flex items-center justify-center gap-1 text-amber-300">
-            <Star className="w-3 h-3 fill-amber-300 animate-pulse" />
-            <span className="text-xs sm:text-sm font-bold leading-tight">
+          <div className="flex items-center justify-center gap-1.5 text-amber-300">
+            <Star className="w-3.5 h-3.5 fill-amber-300 animate-pulse" />
+            <span className="text-xs sm:text-sm lg:text-base font-bold leading-tight">
               Stay Blessed
             </span>
-            <Star className="w-3 h-3 fill-amber-300 animate-pulse" />
+            <Star className="w-3.5 h-3.5 fill-amber-300 animate-pulse" />
           </div>
-          <span className="text-[11px] sm:text-xs font-semibold text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] leading-tight mt-0.5">
+          <span className="text-xs sm:text-sm font-semibold text-teal-300 font-['Noto_Sans_Devanagari',sans-serif] leading-tight mt-0.5">
             सदा आनंदी व सुखी राहा
           </span>
-          <span className="text-[10px] text-pink-400 font-bold mt-0.5 tracking-wider flex items-center justify-center gap-1">
+          <span className="text-[11px] sm:text-xs text-pink-400 font-bold mt-0.5 tracking-wider flex items-center justify-center gap-1">
             <span>✨</span>
             <span>Celebrate Day</span>
             <span>✨</span>

@@ -7,6 +7,7 @@ import {
   Maximize2,
   Minimize2,
   Tv,
+  Fullscreen,
   RotateCcw,
   Sparkles,
 } from 'lucide-react';

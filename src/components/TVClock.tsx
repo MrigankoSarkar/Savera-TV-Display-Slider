@@ -27,9 +27,9 @@ export const TVClock: React.FC = () => {
   return (
     <div
       id="tv-live-clock"
-      className="fixed bottom-2.5 right-3 z-50 pointer-events-auto select-none"
+      className="fixed top-2.5 right-3 sm:top-3 sm:right-4 z-50 pointer-events-auto select-none"
     >
-      <div className="bg-slate-950/80 backdrop-blur-md text-white border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.6)] rounded-xl px-3 sm:px-3.5 py-1.5 flex items-center gap-2.5 sm:gap-3 transition-all hover:border-teal-500/40">
+      <div className="bg-slate-950/85 backdrop-blur-md text-white border border-white/15 shadow-[0_8px_30px_rgba(0,0,0,0.7)] rounded-xl px-3 sm:px-3.5 py-1.5 flex items-center gap-2.5 sm:gap-3 transition-all hover:border-teal-500/50">
         {/* Live indicator light matching Vibrant Palette status */}
         <div className="flex flex-col items-center justify-center pr-2.5 border-r border-white/10">
           <div className="flex items-center gap-1.5">

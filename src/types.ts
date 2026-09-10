@@ -49,6 +49,10 @@ export interface SlideData {
     mr: string;
     dept?: string;
   };
+  figHeading?: {
+    en: string;
+    mr: string;
+  };
   roleType?: 'welder' | 'machine' | 'forklift' | 'powder_coating' | 'crane' | 'electric' | 'chemical' | 'hazardous_waste' | 'hazardous_waste_3r';
   callouts?: CalloutItem[];
   secondaryOperator?: {
