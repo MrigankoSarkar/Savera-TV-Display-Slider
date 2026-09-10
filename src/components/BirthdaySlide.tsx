@@ -216,7 +216,7 @@ export const BirthdaySlide: React.FC<BirthdaySlideProps> = ({ isActive }) => {
               SAVERA AUTO COMPS PVT LTD
             </span>
             <span className="text-xs text-teal-400 font-mono tracking-widest uppercase block">
-              UNIT - I &bull; PUNE
+              UNIT - I &bull; Chhatrapati Sambhajinagar
             </span>
           </div>
         </div>
